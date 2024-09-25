@@ -226,5 +226,41 @@ kristiyan.convertGradeToClassification()
 
 
 print("\nExercise 9")
+#In preparation for further work (and one final practice of writing classes and instantiating objects), 
+#write a Module class where the constructor will store the module name and module code. 
+#Also create a print function which will output the relevant values for an object of this class.
 
-print("\nExercise 10")
+#Call the constructor and create a module object (e.g. COM4008 Programming Concepts).
+
+#Extension: Link the Course and Module class so that students on a course, also take a module. 
+#To keep it simple, write a function in the Course class that enables module objects to be added 
+#(e.g. add_module() ) to an attribute of a course object.
+
+class Module:
+    def __init__(self, name, code):
+        self.name = name
+        self.code = code
+
+    def printDetails(self):
+        print(f"Module Name: {self.name}")
+        print(f"Module Code: {self.code}")
+
+class Course:
+    def __init__(self, courseName):
+        self.courseName = courseName
+        self.modules = []  
+
+    def addModule(self, module):
+        self.modules.append(module) 
+
+    def printModules(self):
+        print(f"Modules for Course: {self.courseName}")
+        for module in self.modules:
+            module.printDetails()
+
+module1 = Module("Programming Concepts", "COM4008")
+course1 = Course("Game Development")
+
+course1.addModule(module1)
+
+course1.printModules()
